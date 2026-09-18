@@ -47,13 +47,13 @@ function App() {
     <AnimatePresence mode="wait">
       {screen === 1 && <motion.section key="ask" {...pageMotion} transition={{ duration: .45 }} className="card ask-card">
         <div className="icon-sprinkles">{floatingIcons.map((icon, i) => <motion.span key={i} animate={{ y: [0, -8, 0], rotate: [0, i % 2 ? 10 : -10, 0] }} transition={{ duration: 2.2 + i * .08, repeat: Infinity, delay: i * .11 }} className={'sprinkle s' + i}>{icon}</motion.span>)}</div>
-        <p className="eyebrow">MỘT LỜI HỎI NHỎ</p><h1>Em đi chơi<br />với anh nhé?</h1><Flower />
-        <p className="support-copy">Không áp lực đâu. Chỉ là một khả năng rất đáng yêu.</p>
+        <p className="eyebrow">MỘT LỜI MỜI NHỎ</p><h1>Em đi chơi<br />với anh nhé?</h1><Flower />
+        <p className="support-copy">Không áp lực đâu. Chỉ là lời mời rủ nhỏ thui.</p>
         <div className="ask-actions"><button className="button primary" onClick={() => setScreen(2)}>ĐỒNG Ý <span>♡</span></button>{!noPos && <button className="button no-button" onMouseEnter={dodge} onFocus={dodge} onTouchStart={dodge}>Không</button>}</div>
-        <p className="dodge-count">{dodges ? `Nút “Không” đã chạy trốn ${dodges} lần rồi` : 'Nút “Không” đang hơi ngại ngùng'}</p>
+        <p className="dodge-count">{dodges ? `Nút “Không” đã chạy trốn ${dodges} lần rồi đó` : 'Nút “Không” đang hơi ngại ngùng'}</p>
       </motion.section>}
       {screen === 2 && <motion.section key="yay" {...pageMotion} transition={{ duration: .45 }} className="card celebration-card"><Confetti />
-        <div className="party-mark"><Heart size={28} fill="currentColor" /></div><p className="eyebrow">VUI QUÁ ĐI MẤT</p><h1>Yay — mình<br />có hẹn rồi.</h1><p className="lead">Anh biết em có gu mà.</p>
+        <div className="party-mark"><Heart size={28} fill="currentColor" /></div><p className="eyebrow">VUI QUÁ ĐI MẤT</p><h1>Yeah — mình<br />có hẹn rồi.</h1><p 
         <div className="mini-hearts">♡ &nbsp; ✦ &nbsp; ♡</div><button className="button primary full-button" onClick={() => setScreen(3)}>Mình cùng lên kế hoạch nhé <span>→</span></button>
       </motion.section>}
       {screen === 3 && <motion.section key="plan" {...pageMotion} transition={{ duration: .45 }} className="card plan-card"><p className="eyebrow">ĐẾN PHẦN VUI NHẤT</p><h1>Chọn ngày,<br />giờ và kế hoạch.</h1><p className="lead small-lead">Mình cùng chọn điều thật vui nhé.</p>
