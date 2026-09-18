@@ -4,4 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   base: '/Date-for-Me/',
+  plugins: [react(), tailwindcss()],
 })
