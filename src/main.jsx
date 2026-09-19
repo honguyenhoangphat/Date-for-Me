@@ -56,16 +56,16 @@ function App() {
     <AnimatePresence mode="wait">
       {screen === 1 && <motion.section key="ask" {...pageMotion} transition={{ duration: .45 }} className="card ask-card">
         <div className="icon-sprinkles">{floatingIcons.map((icon, i) => <motion.span key={i} animate={{ y: [0, -8, 0], rotate: [0, i % 2 ? 10 : -10, 0] }} transition={{ duration: 2.2 + i * .08, repeat: Infinity, delay: i * .11 }} className={'sprinkle s' + i}>{icon}</motion.span>)}</div>
-        <p className="eyebrow">MỘT LỜI HỎI NHỎ</p><h1>Em đi chơi<br />với anh nhé?</h1><Flower />
-        <p className="support-copy">Không áp lực đâu. Chỉ là một khả năng rất đáng yêu.</p>
+        <p className="eyebrow">MỘT LỜI MỜI NHỎ</p><h1>Em đi chơi<br />với anh nhé?</h1><Flower />
+        <p className="support-copy">Không cần áp lực đâu. Chỉ là đặt lịch hẹn trước khi đi chơi thoi.</p>
         <div className="ask-actions"><button className="button primary" onClick={() => setScreen(2)}>ĐỒNG Ý <span>♡</span></button>{!noPos && <button className="button no-button" onMouseEnter={dodge} onFocus={dodge} onTouchStart={dodge}>Không</button>}</div>
-        <p className="dodge-count">{dodges ? `Nút “Không” đã chạy trốn ${dodges} lần rồi` : 'Nút “Không” đang hơi ngại ngùng'}</p>
+        <p className="dodge-count">{dodges ? `Nút “Không” đã chạy trốn ${dodges} lần rồi đó -.-` : 'Nút “Không” đang hơi ngại ngùng'}</p>
       </motion.section>}
       {screen === 2 && <motion.section key="yay" {...pageMotion} transition={{ duration: .45 }} className="card celebration-card"><Confetti />
-        <div className="party-mark"><Heart size={28} fill="currentColor" /></div><p className="eyebrow">VUI QUÁ ĐI MẤT</p><h1>Yay — mình<br />có hẹn rồi.</h1><p className="lead">Anh biết em có gu mà.</p>
-        <div className="mini-hearts">♡ &nbsp; ✦ &nbsp; ♡</div><button className="button primary full-button" onClick={() => setScreen(3)}>Mình cùng lên kế hoạch nhé <span>→</span></button>
+        <div className="party-mark"><Heart size={28} fill="currentColor" /></div><p className="eyebrow">VUI QUÁ ĐI MẤT</p><h1>Yay — mình<br />có hẹn rồi.</h1><p className="lead">Anh biết em cũng muốn đi chơi với anh mà :))))</p>
+        <div className="mini-hearts">♡ &nbsp; ✦ &nbsp; ♡</div><button className="button primary full-button" onClick={() => setScreen(3)}>Cùng lên kế hoạch nhé <span>→</span></button>
       </motion.section>}
-      {screen === 3 && <motion.section key="plan" {...pageMotion} transition={{ duration: .45 }} className="card plan-card"><p className="eyebrow">ĐẾN PHẦN VUI NHẤT</p><h1>Chọn ngày,<br />giờ và kế hoạch.</h1><p className="lead small-lead">Mình cùng chọn điều thật vui nhé.</p>
+      {screen === 3 && <motion.section key="plan" {...pageMotion} transition={{ duration: .45 }} className="card plan-card"><p className="eyebrow">ĐẾN PHẦN QUAN TRỌNG NHẤT</p><h1>Chọn ngày,<br />giờ và kế hoạch.</h1><p className="lead small-lead"></p>
         <div className="input-grid"><label><span>NGÀY</span><div className="input-wrap"><CalendarDays size={17} /><input aria-label="Ngày hẹn" type="date" value={date} onChange={e => setDate(e.target.value)} min={new Date().toISOString().slice(0, 10)} /></div></label><label><span>GIỜ (24 giờ)</span><div className="input-wrap time-wrap"><Clock3 size={17} /><div className="time-pair"><input aria-label="Giờ" className="time-part" type="text" inputMode="numeric" placeholder="00" maxLength={2} value={hour} onChange={e => { const v = e.target.value.replace(/\D/g, '').slice(0, 2); setHour(v); if (v.length === 2) minuteRef.current?.focus() }} /><span>:</span><input ref={minuteRef} aria-label="Phút" className="time-part" type="text" inputMode="numeric" placeholder="00" maxLength={2} value={minute} onChange={e => setMinute(e.target.value.replace(/\D/g, '').slice(0, 2))} /></div></div></label></div>
         <div className="plan-section"><span>KẾ HOẠCH</span><div className="pills">{plans.map(item => <button type="button" key={item.label} onClick={() => setPlan(item.label)} className={'pill ' + (plan === item.label ? 'chosen' : '')}><i>{item.icon}</i>{item.label}{plan === item.label && <Check size={14} />}</button>)}</div></div>
         {plan === 'Khác' && <label className="extra-field"><span>EM MUỐN LÀM GÌ?</span><input type="text" placeholder="Ví dụ: đi triển lãm, chơi bowling..." value={customPlan} onChange={e => setCustomPlan(e.target.value)} /></label>}
